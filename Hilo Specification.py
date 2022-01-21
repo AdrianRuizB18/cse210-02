@@ -41,3 +41,26 @@ def ChangeScore(Result, Selection,Score):
     return Score
 
 main()
+
+class Player:
+  
+    def __init__(self):
+        '''A special method, called a constructor, that initializes two
+        attributes. It is invoked using the class name followed by parentheses.
+        '''
+        self.score = "300"
+        self.continue_game = True
+        self.guess = ""
+
+    def guess_card(self):
+        self.guess = input(f'Higher or Lower? H/L ')
+    
+    def change_score(self, card1, card2):
+        pass
+
+    def end_game(self):
+        pass
+    
+class Card:
+    def __init__(self):
+        self.number = randint(0, 13)
