@@ -48,13 +48,6 @@ def main():
         print(f'Your score is: {player1.score}')
         player1.end_game()
         print()
-
-"""     else: 
-        if player1 <= 0:
-            print('You lost')
-        else:
-            print(f'Final Score: {Score}') 
-            print('Thanks for playing') """
         
 def WinOrLost(Card1, Card2):
     if Card1.number > Card2.number:
