@@ -1,9 +1,13 @@
 from random import randint
 
 class Player:
+    """
+    A class describing everything pertaining to the Player object. This class will handle 
+    most of the game's logic and keep track of the score.
+    """
   
     def __init__(self):
-        '''A special method, called a constructor, that initializes two
+        '''A special method, called a constructor, that initializes three
         attributes. It is invoked using the class name followed by parentheses.
         '''
         self.score = 300
@@ -11,9 +15,13 @@ class Player:
         self.guess = ""
 
     def guess_card(self):
+        """Method to get the player's guess"""
         self.guess = input('Higher or Lower? [H/L]')
 
     def end_game(self):
+        """Handles the logic to check if game over conditions have been achieved 
+        (either the player's score reaches 0 or the player doesn't wish to continue)."""
+
         if self.score > 0:
             again = input("Play again? [y/n]: ")
             if again == "n":
@@ -29,6 +37,7 @@ class Player:
         pass """
 
 class Card:
+    """Class that handles the card object and it's related attributes."""
     def __init__(self, number=None):
         if number is None:
             number = randint(1,13)
