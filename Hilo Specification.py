@@ -1,33 +1,58 @@
 from random import randint
 
-def main():
-    Score = 300
-    Cards = randint(0, 13)
-    F = 0
-    End = 'Y'
-    Result =''
-    while  End.upper == 'Y' or Score > 0:
-        Card1 = randint(0, 13)
-        print(f'The card is: {Card1}')
-        Selection =input(f'Higher or Lower? H/L ')
-        Card2 = randint(0, 13)
-        print(f'New card was: {Card2}') 
-        Result = WinOrLost(Card1, Card2)
-        Score = ChangeScore(Result,Selection,Score)
-        print(f'Your score is: {Score}')
-        End = input('Play again? Y/N ')
-        print()
-    else: 
-        if Score <= 0:
-            print('You lost')
+class Player:
+  
+    def __init__(self):
+        '''A special method, called a constructor, that initializes two
+        attributes. It is invoked using the class name followed by parentheses.
+        '''
+        self.score = 300
+        self.continue_game = True
+        self.guess = ""
+
+    def guess_card(self):
+        self.guess = input('Higher or Lower? [H/L]')
+
+    def end_game(self):
+        if self.score > 0:
+            again = input("Play again? [y/n]: ")
+            if again == "n":
+                print(f'Final Score: {self.score}')
+                print("Game Over! Thanks for Playing")
+                self.continue_game = False
         else:
-            print(f'Final Score: {Score}')
-        print('Thanks for playing')
+            print("Game Over! Thanks for Playing")
+            self.continue_game = False
+            
+    
+"""     def change_score(self, card1, card2):
+        pass """
+
+class Card:
+    def __init__(self, number=None):
+        if number is None:
+            number = randint(1,13)
+        self.number = number
+
+def main():
+    player1 = Player()
+    Result =''
+    while player1.continue_game == True:
+        Card1 = Card()
+        print(f'The card is: {Card1.number}')
+        player1.guess_card()
+        Card2 = Card()
+        print(f'New card was: {Card2.number}') 
+        Result = WinOrLost(Card1, Card2)
+        player1.score = ChangeScore(Result, player1.guess, player1.score)
+        print(f'Your score is: {player1.score}')
+        player1.end_game()
+        print()
         
 def WinOrLost(Card1, Card2):
-    if Card1 > Card2:
+    if Card1.number > Card2.number:
         Result = 'L'
-    elif Card2 > Card1:
+    elif Card2.number > Card1.number:
         Result = 'H'
     else: 
         Result = ''
@@ -42,25 +67,10 @@ def ChangeScore(Result, Selection,Score):
 
 main()
 
-class Player:
-  
-    def __init__(self):
-        '''A special method, called a constructor, that initializes two
-        attributes. It is invoked using the class name followed by parentheses.
-        '''
-        self.score = "300"
-        self.continue_game = True
-        self.guess = ""
 
-    def guess_card(self):
-        self.guess = input(f'Higher or Lower? H/L ')
-    
-    def change_score(self, card1, card2):
-        pass
 
-    def end_game(self):
-        pass
     
-class Card:
-    def __init__(self):
-        self.number = randint(0, 13)
+
+
+    
+
