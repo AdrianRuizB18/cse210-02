@@ -69,9 +69,9 @@ def WinOrLost(Card1, Card2):
 
 def ChangeScore(Result, Selection,Score):
     if Result  == Selection.upper():
-        Score = Score + 100
+        Score += 100
     else:
-        Score = Score - 75
+        Score -= 75
     return Score
 
 main()
